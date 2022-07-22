@@ -55,22 +55,21 @@ resource "azurerm_resource_group" "this" {
   location = "westeurope"
 }
 
-data "azurerm_client_config" "this" {}
-
 module "privatednszone" {
   source               = "./module"
-  name                 = "example.mydomain.com"
+  name                 = "myexample.mydomain.com"
   resource_group_name  = azurerm_resource_group.this.name
   registration_enabled = true
   virtual_networks_to_link = {
-    ("myVnetNameToLink_1") = {
-      subscription_id     = data.azurerm_client_config.this.subscription_id
-      resource_group_name = "myVnetResourceGroupNameToLink_1"
+    ("myVneToLinkName_1") = {
+      subscription_id     = "myVnetToLinkSsubscriptionId_1"
+      resource_group_name = "myVnetToLinkResourceGroupName_1"
+    },
+    ("myVnetToLinkName_2") = {
+      subscription_id     = "myVnetToLinkSsubscriptionId_2"
+      resource_group_name = "myVnetToLinkResourceGroupName_2"
     }
   }
-  depends_on = [
-    module.network,
-  ]
 }
 ```
 
