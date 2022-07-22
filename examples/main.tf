@@ -11,9 +11,9 @@ module "privatednszone" {
   resource_group_name  = azurerm_resource_group.this.name
   registration_enabled = true
   virtual_networks_to_link = {
-    ("myVnetExampleName") = {
+    ("myVnetNameToLink_1") = {
       subscription_id     = data.azurerm_client_config.this.subscription_id
-      resource_group_name = azurerm_resource_group.this.name
+      resource_group_name = "myVnetResourceGroupNameToLink_1"
     }
   }
   depends_on = [
