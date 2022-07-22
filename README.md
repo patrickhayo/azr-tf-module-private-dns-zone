@@ -28,8 +28,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_private_dns_zone.private_dns_zone](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_dns_zone) | resource |
-| [azurerm_private_dns_zone_virtual_network_link.link](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_dns_zone_virtual_network_link) | resource |
+| [azurerm_private_dns_zone.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_dns_zone) | resource |
+| [azurerm_private_dns_zone_virtual_network_link.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_dns_zone_virtual_network_link) | resource |
 
 ## Inputs
 
@@ -53,6 +53,24 @@ No modules.
 resource "azurerm_resource_group" "this" {
   name     = uuid()
   location = "westeurope"
+}
+
+data "azurerm_client_config" "this" {}
+
+module "privatednszone" {
+  source               = "./module"
+  name                 = "example.mydomain.com"
+  resource_group_name  = azurerm_resource_group.this.name
+  registration_enabled = true
+  virtual_networks_to_link = {
+    ("myVnetExampleName") = {
+      subscription_id     = data.azurerm_client_config.this.subscription_id
+      resource_group_name = azurerm_resource_group.this.name
+    }
+  }
+  depends_on = [
+    module.network,
+  ]
 }
 ```
 
