@@ -1,4 +1,4 @@
-ormatter: markdown table
+formatter: markdown table
 header-from: header.tf
 
 content: |-
