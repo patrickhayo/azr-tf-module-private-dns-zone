@@ -1,6 +1,6 @@
-# azr-tf-module-template
+# azr-tf-module-private-dns-zone
 
-[Terraform](https://www.terraform.io) Module to create **[NAME]** in Azure
+[Terraform](https://www.terraform.io) Module to create **Private DNS Zone** in Azure
 
 <!-- BEGIN_TF_DOCS -->
 ## Prerequisites
