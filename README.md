@@ -35,6 +35,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_name"></a> [name](#input\_name) | (Required) Specifies the name of the private dns zone | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | (Required) Specifies the resource group name of the private dns zone | `string` | n/a | yes |
 | <a name="input_registration_enabled"></a> [registration\_enabled](#input\_registration\_enabled) | (Required) Specifies the resource group name of the private dns zone | `bool` | `false` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Specifies the tags of the private dns zone | `map` | `{}` | no |
