@@ -1,4 +1,4 @@
-ariable "name" {
+variable "name" {
   description = "(Required) Specifies the name of the private dns zone"
   type        = string
 }
